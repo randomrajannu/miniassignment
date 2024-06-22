@@ -1,6 +1,6 @@
 # miniassignment
 
-## Ollama Llama3.
+# Ollama Llama3.
 Get up and running with large language models.
 We tried to download it with windows with this link : https://ollama.com/download/OllamaSetup.exe
 
@@ -115,3 +115,44 @@ Use curl Command to Generate Text
 bash
 Copy code
 curl -X POST http://localhost:5000/generate -H "Content-Type: application/json" -d '{"text": "Once upon a time"}'
+
+
+
+# Introduction to setting up GPT-Neo
+
+GPT-Neo is an open-source implementation of EleutherAI's GPT-3 model, designed for natural language processing tasks such as textgeneration, completion, and more. This guide will walk you through the installation process to get GPT-Neo up and running on your local machine.
+
+
+
+## Installation
+Clone the Repository
+Clone the GPT-Neo repository from GitHub to your local machine using the following command:
+
+git clone https://github.com/EleutherAI/gpt-neo.git
+cd gpt-neo
+
+### make a python file and write the code in it.
+
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+
+model_name = "gpt2"  # Model name remains the same
+
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+model = GPT2LMHeadModel.from_pretrained(model_name)
+
+def generate_conversation(prompt):
+    inputs = tokenizer(prompt, return_tensors="pt")
+    outputs = model.generate(inputs.input_ids, max_length=200, num_return_sequences=1, no_repeat_ngram_size=2, early_stopping=True)
+    text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return text
+
+prompt = "Rajan: How is your health?\nHelly:"
+conversation = generate_conversation(prompt)
+print(conversation)
+
+### desired output
+
+![image](https://github.com/randomrajannu/miniassignment/assets/123664654/174bdfc1-633e-46ee-b196-f0e2d93bec87)
+
+
+
