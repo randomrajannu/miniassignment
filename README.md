@@ -26,25 +26,25 @@ We can also check the logs in the folder of Ollama, attaching to the repository.
 
 
 ## GPT-J, an open-source model by EleutherAI
-# LLM Setup and Interaction
+### LLM Setup and Interaction
 
-## Introduction
+### Introduction
 This repository contains setup instructions and scripts for deploying and interacting with Llama3 and GPT-J on a local machine.
 
-## Prerequisites
+### Prerequisites
 - Python 3.x
 - `pip` (Python package installer)
 - Virtual environment tool (optional but recommended)
 
-## Setup Instructions
+### Setup Instructions
 
-### 1. Environment Setup
-1. **Create and Activate Virtual Environment (optional but recommended)**
+#### 1. Environment Setup
+1. Create and Activate Virtual Environment (optional but recommended)
    ```bash
    python -m venv llm_env
    source llm_env/bin/activate  # On Windows use `llm_env\Scripts\activate`
 
-Install Required Packages
+#### Install Required Packages
 
 pip install flask torch transformers
 
@@ -67,7 +67,7 @@ from transformers import GPTJForCausalLM, GPT2Tokenizer
 
 app = Flask(__name__)
 
-# Load the model and tokenizer
+Load the model and tokenizer
 tokenizer = GPT2Tokenizer.from_pretrained("EleutherAI/gpt-j-6B")
 model = GPTJForCausalLM.from_pretrained("EleutherAI/gpt-j-6B")
 
@@ -86,12 +86,14 @@ def generate_text():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-3. Run the Flask Server
+    
+#### 3. Run the Flask Server
 Start the Flask Application
 bash
 Copy code
 python app.py
-4. Interact with the Model via curl
+
+#### 4. Interact with the Model via curl
 Use curl Command to Generate Text
 bash
 Copy code
@@ -158,14 +160,14 @@ def generate_text():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-3. Run the Flask Server
+### 3. Run the Flask Server
 Start the Flask Application
 bash
 
 python app.py
-4. Interact with the Model via curl
+### 4. Interact with the Model via curl
 Use curl Command to Generate Text
 bash
-Copy code
+
 curl -X POST http://localhost:5000/generate -H "Content-Type: application/json" -d '{"text": "Once upon a time"}'
 
