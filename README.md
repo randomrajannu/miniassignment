@@ -122,13 +122,12 @@ curl -X POST http://localhost:5000/generate -H "Content-Type: application/json" 
 
 GPT-Neo is an open-source implementation of EleutherAI's GPT-3 model, designed for natural language processing tasks such as textgeneration, completion, and more. This guide will walk you through the installation process to get GPT-Neo up and running on your local machine.
 
-
-
 ## Installation
 Clone the Repository
 Clone the GPT-Neo repository from GitHub to your local machine using the following command:
 
 git clone https://github.com/EleutherAI/gpt-neo.git
+
 cd gpt-neo
 
 ### make a python file and write the code in it.
